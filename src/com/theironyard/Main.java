@@ -88,7 +88,6 @@ public class Main {
                     beer.name = request.queryParams("beername");
                     beer.type = request.queryParams("beertype");
                     insertBeer(conn, beer.name, beer.type);
-
                     response.redirect("/");
                     System.out.println();
                     return "";
@@ -103,7 +102,6 @@ public class Main {
                         deleteBeer(conn, idNum);
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
-
                     }
                     response.redirect("/");
                     return "";
@@ -115,17 +113,15 @@ public class Main {
                 ((request, response) -> {
                     String edit = request.queryParams("beerid");
                     try {
-
                         String name = request.queryParams("beername");
                         String type = request.queryParams("beertype");
                         int id = Integer.valueOf(edit);
-                        PreparedStatement stmt2 = conn.prepareStatement("UPDATE beers SET name = ?, " +
-                                "type =? WHERE id =" + id);
+                        //PreparedStatement stmt2 = conn.prepareStatement("UPDATE beers SET name = ?, " +
+                          //      "type =? WHERE id =" + id);
                         editBeer(conn, name, type, id);
-                        stmt2.execute();
+                       // stmt2.execute();
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
-
                     }
                     response.redirect("/");
                     return "";
